@@ -3,4 +3,12 @@ const randomNum = (number) => {
   return rand;
 };
 
-export default randomNum;
+const multipleDice = (times, number) => {
+  let arrayTimes = [];
+  for (let index = 0; index < times; index++) {
+    arrayTimes.push(randomNum(number));
+  }
+  return arrayTimes;
+};
+
+export default multipleDice;

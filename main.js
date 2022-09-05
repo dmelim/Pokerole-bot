@@ -1,5 +1,5 @@
 import { Client, GatewayIntentBits } from "discord.js";
-import randomNum from "./randomNum.js";
+import multipleDice from "./randomNum.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -16,30 +16,39 @@ client.on("interactionCreate", async (interaction) => {
 
   const { commandName } = interaction;
 
+  let times;
+  let throws;
+
   switch (commandName) {
     case "d4":
-      const RandomD4 = randomNum(4);
-      await interaction.reply(RandomD4.toString());
+      times = interaction.options.getNumber("num");
+      throws = times ? multipleDice(times, 4) : multipleDice(1, 4);
+      await interaction.reply("Here are the throws: " + throws.toString());
       break;
     case "d6":
-      const RandomD6 = randomNum(6);
-      await interaction.reply(RandomD6.toString());
+      times = interaction.options.getNumber("num");
+      throws = times ? multipleDice(times, 6) : multipleDice(1, 6);
+      await interaction.reply("Here are the throws: " + throws.toString());
       break;
     case "d8":
-      const RandomD8 = randomNum(8);
-      await interaction.reply(RandomD8.toString());
+      times = interaction.options.getNumber("num");
+      throws = times ? multipleDice(times, 8) : multipleDice(1, 8);
+      await interaction.reply("Here are the throws: " + throws.toString());
       break;
     case "d10":
-      const RandomD10 = randomNum(10);
-      await interaction.reply(RandomD10.toString());
+      times = interaction.options.getNumber("num");
+      throws = times ? multipleDice(times, 10) : multipleDice(1, 8);
+      await interaction.reply("Here are the throws: " + throws.toString());
       break;
     case "d12":
-      const RandomD12 = randomNum(12);
-      await interaction.reply(RandomD12.toString());
+      times = interaction.options.getNumber("num");
+      throws = times ? multipleDice(times, 12) : multipleDice(1, 12);
+      await interaction.reply("Here are the throws: " + throws.toString());
       break;
     case "d20":
-      const RandomD20 = randomNum(20);
-      await interaction.reply(RandomD20.toString());
+      times = interaction.options.getNumber("num");
+      throws = times ? multipleDice(times, 20) : multipleDice(1, 20);
+      await interaction.reply("Here are the throws: " + throws.toString());
       break;
 
     default:
