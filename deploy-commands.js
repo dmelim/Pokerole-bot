@@ -40,6 +40,24 @@ const commands = [
     .addNumberOption((option) =>
       option.setName("num").setDescription("Number of dice?")
     ),
+  new SlashCommandBuilder()
+    .setName("getpokemon")
+    .setDescription("Replies with an image of a pokemon!")
+    .addStringOption((option) =>
+      option
+        .setName("input")
+        .setDescription("Name of the Pokemon?")
+        .setRequired(true)
+    ),
+  new SlashCommandBuilder()
+    .setName("damagetypechart")
+    .setDescription("Replies with an image of the damage charts!"),
+  new SlashCommandBuilder()
+    .setName("misterydungeon")
+    .setDescription("Replies with the mistery dungeon module download!"),
+  new SlashCommandBuilder()
+    .setName("corebook")
+    .setDescription("Replies with the pokerole corebook download!"),
 ].map((command) => command.toJSON());
 
 const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);

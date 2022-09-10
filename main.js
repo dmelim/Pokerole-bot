@@ -1,5 +1,6 @@
 import { Client, GatewayIntentBits } from "discord.js";
 import multipleDice from "./randomNum.js";
+import getPokemon from "./fetchPokemon.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -50,7 +51,26 @@ client.on("interactionCreate", async (interaction) => {
       throws = times ? multipleDice(times, 20) : multipleDice(1, 20);
       await interaction.reply("Here are the throws: " + throws.toString());
       break;
-
+    case "getpokemon":
+      let pokemon = interaction.options.getString("input");
+      await interaction.reply(`A wild ${pokemon} appears!`);
+      await interaction.followUp(await getPokemon(pokemon));
+      break;
+    case "damagetypechart":
+      await interaction.reply(
+        "https://www.pokeroleproject.com/_files/ugd/0fa3fd_5ff900ed194a4a4aa8dd4a35554aef7b.pdf"
+      );
+      break;
+    case "misterydungeon":
+      await interaction.reply(
+        "http://www.mediafire.com/download/vv6nke1tpexjae2/Pokerole+Mystery+Dungeon.pdf?fbclid=IwAR0YXgZJRf2Cps1qmSY3mw-SN7bBcqiKeGjm9_guqBd6GPDz6UMjpFBh5nA"
+      );
+      break;
+    case "corebook":
+      await interaction.reply(
+        "http://www.mediafire.com/file/lmy748dyica8wu6/POKEROLE_COREBOOK_2.0.pdf/file?fbclid=IwAR0wmrosku4hu3po9BqkvhC7t6jnIqapmSrwC8mrp8PKAVunXVmz_k8lBl8"
+      );
+      break;
     default:
       await interaction.reply("Command not found");
       break;
